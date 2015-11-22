@@ -11,6 +11,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   frame_interpolation/frame_interpolation
 
 
 Indices and tables
