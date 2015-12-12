@@ -1,0 +1,3 @@
+[submodule "source/topic_model/C89"]
+	path = source/topic_model/C89
+	url = git@github.com:henry0312/C89.git
