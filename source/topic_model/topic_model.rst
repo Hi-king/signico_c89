@@ -7,10 +7,9 @@
 
 .. raw:: latex
 
-   \input{../../source/topic_model/C89/introduction}
-   \input{../../source/topic_model/C89/related_work}
-   \input{../../source/topic_model/C89/experiments}
-   \input{../../source/topic_model/C89/conclusions}
-   \bibliographystyle{jplain}
-   \bibliography{../../source/topic_model/C89/main}
+   \input{topic_model/introduction}
+   \input{topic_model/related_work}
+   \input{topic_model/experiments}
+   \input{topic_model/conclusions}
+   \input{topic_model/reference}
 

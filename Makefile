@@ -115,6 +115,7 @@ epub:
 
 latex:
 	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
+	ln -sf ../../source/topic_model/C89/topic_model $(BUILDDIR)/latex/
 	@echo
 	@echo "Build finished; the LaTeX files are in $(BUILDDIR)/latex."
 	@echo "Run \`make' in that directory to run these through (pdf)latex" \
