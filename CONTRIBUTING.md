@@ -3,7 +3,8 @@
 
 1. `mkdir ./source/your_document`
 2. `touch ./source/your_document/your_document.rst`
-3. 編集してプルリク
+3. `./source/index.rst`に`your_document/your_document`を追記
+4. 編集してプルリク
 
 内容についての規定
 ----------------------
