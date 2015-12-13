@@ -14,7 +14,7 @@ pip install sphinx
 
 ```
 # latex関係のコマンドが入ってる環境で
-make latexpdfja
+make latexpdf
 open build/latex/signico_c89.pdf
 ```
 
