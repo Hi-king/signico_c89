@@ -12,6 +12,8 @@ Contents:
    :maxdepth: 2
 
    frame_interpolation/frame_interpolation
+   topic_model/topic_model
+   donmaru_recognition_api/donmaru_recognition_api
    dtam/dtam
 
 
@@ -21,4 +23,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
