@@ -20,24 +20,28 @@ DTAMで復元する3Dアニメの世界
 ================
 
 3DCGは様々な意味で一般人にも近い存在になった．
-MMDによってCG世界を構築し，Oculus Riftによってその世界の中を歩くこともできる．
-しかし，CGのモデル作成ツールを使いこなすのは一般人には難しい．
+BlenderなどのモデリングツールによってCG世界を構築し，
+Oculus Riftなどのヘッドマウントディスプレイによってその世界の中を歩くこともできるようになった．
+しかし，モデリングツールを使いこなすのは一般人には難しい．
 例えば今見ているアニメがあって，「その世界の中を散歩したい！」と思っても，
-アニメで用いられているモデルが公開されていることは珍しいため，モデルを作るのに一苦労してしまう．
+アニメで用いられているモデルが公開されていることは珍しいため，モデルを作る段階でかなりの苦労を要してしまう．
 
 一方で，昨今のアニメには3DCGが広く利用されるようになった．
 3DCGアニメの大きな特徴の一つとして，正確なパースやカメラワークによる映像が
-秒間数十フレームも得られるということが挙げられる．
+毎秒数十フレームもの割合で得られるということが挙げられる．
 これだけの正確な情報が沢山あれば，3次元再構成技術を使い，
 3DCGアニメの映像から，そのアニメ中のモデルを推定できるのではないか？
-そこで今回は，DTAMという方法を用い，放送されているアニメの映像のみからその中の風景の3Dモデルを構成する問題を問いてみた．
+そこで本稿では，DTAMという方法を用い，放送されている3Dアニメの映像のみからその中の風景の3Dモデルを構成する問題を問いてみた．
 
 DTAMによる3次元再構成
 ================
 
+概要
+---------------
+映像から3Dモデルを得る3次元再構成の問題設定は，自律探索ロボットなどを扱うロボット工学で発展してきた．
 カメラを搭載した自律型の探索ロボットに，カメラの映像のみから探索地域の3Dモデルを作らせることを考える．
-GPSが一切無い，遠くの惑星のような地域で探索を行うには，
-周囲の3Dモデル（地図に対応）を作るタスクと，3Dモデル中での自分の位置を同時に推定することが必要になる．
+GPSが一切無い遠くの惑星のような地域では，位置情報が映像からしか得られない．
+したがって，映像から周囲の3Dモデル（地図に対応）を推定するタスクと，その3Dモデル中での自分の位置を推定するタスクを同時に解く必要がある．
 このような問題設定，およびそれを解く方法を総称してSLAM (Simultaneous Localization and Mapping) と呼ぶ．
 DTAM (Dense Tracking and Mapping [dtam]_) とは，SLAMの一種で，単眼RGB画像の全画素を入力としてSLAMを行う方法である．
 DTAMが行っている事を人間で喩えるなら，片目だけ開けた状態で部屋の中を動きまわり，その部屋の間取り図を描きながら間取り図中の自分の位置を推定するということだ．
@@ -54,7 +58,7 @@ DTAMは，そんな3次元再構成を一台の単眼RGBカメラの映像のみ
 
 
 定式化
-===================
+---------------
 
 (執筆中)
 
@@ -65,31 +69,51 @@ Regularized Energy Functional の最適化
 方法
 ===================
 
+実験条件
+------------
+
 以下の動画を使用した．
 
-* ラブライブ！1期OP ステージ映像 (XX:XX - XX:XX)
-* ごちうさ2期OP 冒頭部分 (XX:XX - XX:XX)
+* Big Buck Bunny [bunny]_ (XX:XX:XX - XX:XX:XX)
+* Sintel [sintel]_ (XX:XX:XX - XX:XX:XX)
 
-DTAMの実装には，(TODO)のOpenDTAM[opendtam]_を利用した．
+Big Buck Bunny (BBB) : [bunny]_
+
+Sintel : [sintel]_ 
+
+DTAMの実装には，(TODO)のOpenDTAM [opendtam]_ を利用した．
 これは，画像の時系列をpng画像の列として与え，DTAMにより点群を出力するコードである．
 
 使用環境：Ubuntu 15.04, GeForce GTX 960, Intel Core i7 XXXX, etc etc...
 
+評価
+------------
+3DCGアニメにはそれを生成するためのモデルが必ず存在するため，
+得られたモデルとそのモデルとの差を手法の評価に用いることができる．
+特に，本稿にて使用した BBB はレンダリングに用いた Blender モデルが全て公開されているため，これを用いた評価が可能である．
+DTAMではモデルは点群の形で得られるため，例えば各点の対応するBlenderモデル上でのメッシュとの距離の総和を
+手法の評価に用いることができる．
+しかし，各点の対応するメッシュを求める作業は難しいため，本稿では結果画像による主観的な評価に留めた．
+
+
 結果
-================
+====================
 （画像x2）
 
 結論
-================
-今回は時間がなかったため行わなかったが，得られたモデルを使ってOculus Riftで歩き回ると迫力あるかもしれない．
-また，点群をメッシュに変換したり，テクスチャを得たりすることで，
-MMDモデルにしても捗ると思われる．
+====================
+本稿では時間がなかったため行わなかったが，
+点群からモデルのメッシュおよびテクスチャを得ることで，
+得られたモデルをBlenderやMMD向けのモデルにしても捗ると思われる．
+更に，得られたモデルを使って Oculus Rift で歩き回ると迫力があるかもしれない．
 
 
 
 参考文献
 ================
 
-* .. [dtam] Richard A. Newcombe, Steven J. Lovegrove and Andrew J. Davison, DTAM: Dense Tracking and Mapping in Real-Time, (TODO)
-* .. [kinect] Kinect Fusion
+* .. [dtam] R. A. Newcombe, S. Lovegrove, and A. J. Davison. DTAM: Dense tracking and mapping in real-time. In Proc. of the Int. Conf. on Computer Vision, 2011.
+* .. [kinect] R. A. Newcombe, S. Izadi, O. Hilliges, D. Molyneaux, D. Kim, A. J. Davison, P. Kohli, J. Shotton, S. Hodges, and A. Fitzgibbon, “KinectFusion: Real-time Dense Surface Mapping and Tracking,” in Proc. of the 2011 10th IEEE Int. Symposium on Mixed and Augmented Reality, ISMAR ’11, pp. 127–136, 2011.
+* .. [bunny] Big Buck Bunny. (c) copyright 2008, Blender Foundation / https://peach.blender.org/
+* .. [sintel] Sintel. (c) copyright Blender Foundation | https://durian.blender.org/
 * .. [opendtam] OpenDTAM. https://github.com/anuranbaka/OpenDTAM
