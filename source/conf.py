@@ -214,7 +214,7 @@ latex_elements = {
 #'pointsize': '10pt',
 
 # Additional stuff for the LaTeX preamble.
-#'preamble': '',
+'preamble': '\usepackage{mdframed}',
 
 # Latex figure (float) alignment
 #'figure_align': 'htbp',
