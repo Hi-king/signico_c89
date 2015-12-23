@@ -15,6 +15,7 @@ Contents:
    topic_model/topic_model
    donmaru_recognition_api/donmaru_recognition_api
    dtam/dtam
+   deep_breasts/deep_breasts
 
 
 Indices and tables

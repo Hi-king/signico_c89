@@ -115,7 +115,7 @@ epub:
 
 latex:
 	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
-	ln -sf ../../source/topic_model/C89/topic_model $(BUILDDIR)/latex/
+	ln -sf ../../source/topic_model/C89/topic_model $(BUILDDIR)/latex
 
 pdf:
 	cd $(BUILDDIR)/latex \
